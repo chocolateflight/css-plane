@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --door-width: 15%;
+  --door-height: 2.5%;
+  --plane-background: white;
+  --wing-color: grey;
+  --controls-color: rgb(73, 72, 72);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(135, 146, 241);
+}
+
+.plane {
+  margin: 20%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  z-index: 1;
+}
+
+.clouds {
+  position: absolute;
+  width: 80%;
+  height: 90%;
+  top: -400px;
+  left: -500px;
+  filter: drop-shadow(400px 400px 10px rgba(255, 255, 255, 0.7));
+  transform: scale(2);
+  z-index: 0;
+}
+
+svg path {
+  fill: rgb(135, 146, 241);
+  fill-opacity: 1;
+}
+
+.fuselage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 95%;
+  width: 12%;
+  background-color: var(--plane-background);
+  border-radius: 100% / 30% 30% 40% 40%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.cockpit-windows {
+  position: absolute;
+  height: 10%;
+  width: 12%;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: 50% / 100% 100% 0 0;
+  border-top: 11px solid black;
+  z-index: 4;
+}
+
+.windows-left {
+  position: absolute;
+  top: 18%;
+  left: 1%;
+  height: 80%;
+  width: 10%;
+  z-index: 20;
+}
+
+.windows-right {
+  position: absolute;
+  top: 18%;
+  right: 1%;
+  height: 80%;
+  width: 10%;
+  z-index: 20;
+}
+
+.window {
+  width: 100%;
+  height: 1.5%;
+  background-color: black;
+  z-index: 20;
+  margin-top: 120%;
+}
+
+.window.window-left {
+  border-radius: 50% / 40% 100% 100% 40%;
+}
+
+.window.window-right {
+  border-radius: 50% / 100% 40% 40% 100%;
+}
+
+.door {
+  position: absolute;
+  height: var(--door-height);
+  width: var(--door-width);
+}
+
+.door-left {
+  border-radius: 100% / 0 40% 40% 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.door-right {
+  border-radius: 100% / 40% 0% 0% 40%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.door.door-1L {
+  top: 15%;
+  left: 0;
+}
+
+.door.door-1R {
+  top: 15%;
+  right: 0;
+}
+
+.door.door-2L {
+  bottom: 25%;
+  left: 0;
+}
+
+.door.door-2R {
+  bottom: 25%;
+  right: 0;
+}
+
+.left-wing {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 44%;
+  height: 20%;
+}
+
+.right-wing {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  width: 44%;
+  height: 20%;
+}
+
+.wingpos {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  height: 100%;
+}
+
+.controls {
+  background-color: var(--controls-color);
+  z-index: 1;
+}
+
+.right-wing {
+  transform: scaleX(-1);
+}
+
+.wing-main {
+  width: 100%;
+  height: 100%;
+  background-color: var(--wing-color);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  clip-path: polygon(
+    100% 0%,
+    20% 65%,
+    5% 80%,
+    10% 90%,
+    40% 80%,
+    70% 70%,
+    85% 65%,
+    100% 65%
+  );
+  z-index: 2;
+}
+
+.wing-controls1 {
+  clip-path: polygon(95% 8%, 70% 15%, 70% 30%, 85% 25%, 95% 25%);
+}
+
+.wing-controls2 {
+  clip-path: polygon(69% 15%, 40% 30%, 40% 40%, 69% 30%);
+}
+
+.winglet {
+  background-color: darkblue;
+  clip-path: polygon(5% 40%, 10% 50%, 4% 55%);
+  box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.engine {
+  position: absolute;
+  top: 37%;
+  width: 5%;
+  height: 10%;
+  background-color: var(--plane-background);
+  z-index: -1;
+  border-radius: 20% / 40% 40% 100% 100%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.engine-attach {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 50%;
+  width: 20%;
+  background-color: var(--plane-background);
+  z-index: 0;
+  border-radius: 100% / 10% 10% 0% 0%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#engine-1 {
+  left: 30%;
+}
+
+#engine-2 {
+  right: 30%;
+}
+
+.tailfin {
+  height: 15%;
+  width: 10%;
+  position: absolute;
+  bottom: 10%;
+  left: 45%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: var(--wing-color);
+}
+
+.tail-wing {
+  background-color: var(--wing-color);
+  z-index: 1;
+  position: absolute;
+  bottom: 10%;
+  width: 25%;
+  height: 15%;
+  clip-path: polygon(100% 0%, 0% 70%, 0% 85%, 30% 80%, 100% 70%);
+}
+
+#tail-wing-left {
+  left: 28%;
+}
+
+#tail-wing-right {
+  right: 28%;
+  transform: scaleX(-1);
+}
+
+.tail-control {
+  position: absolute;
+  bottom: 10%;
+  left: 0%;
+  width: 60%;
+  height: 70%;
+  clip-path: polygon(98% 55%, 30% 70%, 30% 90%, 98% 85%);
+}
+
+@media screen and (min-width: 1500px) {
+  .plane {
+    width: 900px;
+    height: 900px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cockpit-windows {
+    border-top: 8px solid black;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .cockpit-windows {
+    border-top: 4px solid black;
+  }
+}
